@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32802.440
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataValidation", "DataValidation\DataValidation.csproj", "{6BC6454B-A8CA-411D-94E7-3E3586A9DB98}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6BC6454B-A8CA-411D-94E7-3E3586A9DB98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BC6454B-A8CA-411D-94E7-3E3586A9DB98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BC6454B-A8CA-411D-94E7-3E3586A9DB98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BC6454B-A8CA-411D-94E7-3E3586A9DB98}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6AA2D5E6-531B-4389-B5C5-E2975264E404}
+	EndGlobalSection
+EndGlobal
