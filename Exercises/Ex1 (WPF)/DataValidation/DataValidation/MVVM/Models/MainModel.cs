@@ -13,8 +13,8 @@ namespace DataValidation.MVVM.Models
         public string userAge = "";
         
         
-        public string firstNameRegex = @"^[a-zA-Z]*";
-        public string ageRegex = @"^[1-9]*";
+        public string firstNameRegex = @"^[a-zA-Z]*$";
+        public string ageRegex = @"^[1-9]*$";
 
         
 
@@ -23,14 +23,14 @@ namespace DataValidation.MVVM.Models
             List<string> errorList = new List<string>();
             errorList.Clear();
 
-            if(firstName == String.Empty || userAge == String.Empty)
+            if (firstName == "" || userAge == "")
             {
                 if (firstName == String.Empty)
                     errorList.Add("*Please enter your name.");
                 if (userAge == String.Empty)
                     errorList.Add("*Please enter your age.");
             }
-            else
+            else if (firstName != "" || userAge != "")
             {
                 if (!Regex.IsMatch(firstName, firstNameRegex))
                     errorList.Add("*Name string is incorrect.");
@@ -38,10 +38,19 @@ namespace DataValidation.MVVM.Models
                     errorList.Add("*Age string is incorrect");
 
                 if (firstName.Length > 50)
-                    errorList.Add("Entered name is too long.");
-                if (userAge.Length > 50)
-                    errorList.Add("Entered age is too long.");
+                    errorList.Add("*Entered name is too long.");
 
+                if(int.TryParse(userAge, out int intAge))
+                {
+                    if (intAge > 150)
+                        errorList.Add("*Entered age value is too big.");
+                }
+
+            }
+            
+            if (errorList.Count == 0)
+            {
+                errorList.Add($"Welcome {firstName}, Age: {userAge}."); ;
             }
 
             return errorList;
