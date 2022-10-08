@@ -4,8 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DataValidation"
+        xmlns:vm="clr-namespace:DataValidation.MVVM.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
@@ -33,31 +38,42 @@
                        FontSize="20"
                        FontWeight="ExtraLight"
                        Margin="-7 0 0 0"/>
+                
                 <TextBox Height="40"
                          BorderThickness="0 0 0 2"
-                         Foreground="#FF343434"
+                         Foreground="#FF5D5D5D"
                          BorderBrush="#FF82A1FF"
                          VerticalContentAlignment="Center"
                          Margin="0 0 0 30"
-                         FontSize="18"/>
-                <Label Content="Last name:" 
+                         FontSize="15"
+                         Padding="5 0 5 0"
+                         Text="{Binding FirstNameTb, UpdateSourceTrigger=PropertyChanged}"/>
+                
+                
+                <Label Content="Age:" 
                        Foreground="#FF404040"
                        FontSize="20"
                        FontWeight="ExtraLight"
                        Margin="-7 0 0 0"/>
+                
                 <TextBox Height="40"
                          BorderThickness="0 0 0 2"
-                         Foreground="#FF343434"
+                         Foreground="#FF5D5D5D"
                          BorderBrush="#FF82A1FF"
                          VerticalContentAlignment="Center"
                          Margin="0 0 0 20"
-                         FontSize="18"/>
+                         FontSize="15"
+                         Padding="5 0 5 0"
+                         Text="{Binding AgeTb, UpdateSourceTrigger=PropertyChanged}"/>
+                
                 <Button Content="Check" 
                         BorderThickness="0"
                         Height="50"
                         Foreground="#FFF0F0F0"
                         FontWeight="ExtraLight" 
-                        FontSize="16">
+                        FontSize="16" 
+                        Margin="0 0 0 10"
+                        Command="{Binding ValidateInput}">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10 0 10 0"></Setter>
@@ -71,6 +87,16 @@
                     </Button.Background>
                 </Button>
 
+                <ListView ItemsSource="{Binding ErrorMessageTb, UpdateSourceTrigger=PropertyChanged}"
+                          Foreground="#FFFF4242"
+                          BorderThickness="0">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Focusable" Value="False"/>
+                            <Setter Property="IsHitTestVisible" Value="False"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
             </StackPanel>
         </Grid>
 
