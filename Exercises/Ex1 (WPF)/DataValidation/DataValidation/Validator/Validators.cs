@@ -9,18 +9,21 @@ namespace DataValidation.Validator
 {
     public class Validators
     {
-        public List<string> errorList = new List<string>();
-        public string firstName;
-        public string userAge;
 
-        public string firstNameRegex = @"^[a-zA-Z]*$";
-        public string ageRegex = @"^[1-9]*$";
+        #region Variables
+            public List<string> errorList = new List<string>();
+            public string firstName;
+            public string userAge;
+
+            public string firstNameRegex = @"^[a-zA-Z]*$";
+            public string ageRegex = @"^[1-9]*$";
+        #endregion 
 
         public Validators(string name, string age, List<string> infoList)
         {
             this.errorList = infoList;
             this.firstName = name;
-            this.userAge = age;
+            this.userAge = age;   
         }
 
         public bool FullValidation(out List<string> myList)
