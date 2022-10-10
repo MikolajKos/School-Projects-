@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataValidation.Validator;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,10 @@ namespace DataValidation.MVVM.Models
         public List<string> ValidateInputData()
         {
             List<string> errorList = new List<string>();
+            Validators myValidator = new Validators(firstName, userAge, ref errorList);
+            return errorList;
+
+/*            List<string> errorList = new List<string>();
             errorList.Clear();
 
             if (firstName == "" || userAge == "")
@@ -53,7 +58,7 @@ namespace DataValidation.MVVM.Models
                 errorList.Add($"Welcome {firstName}, Age: {userAge}."); ;
             }
 
-            return errorList;
+            return errorList;*/
         }
     }
 }
