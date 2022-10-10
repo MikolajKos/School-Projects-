@@ -10,6 +10,7 @@ namespace DataValidation.Validator
     public class SecondValidatorsClass
     {
         public List<string> errorList = new List<string>();
+        public List<string> countErrors = new List<string>();
         public string firstName;
         public string userAge;
 
@@ -23,10 +24,10 @@ namespace DataValidation.Validator
             this.userAge = age;
         }
 
-        public bool FullValidation(out List<string> myList)
+        //Runs all validation methods and returns list of errors
+        //Param1: welcomeMessage - if no error occured string will display name and age of user
+        public List<string> FullValidation(out string welcomeMessage)
         {
-            List<string> CountErrors = new List<string>();
-
             #region Add errorList messages
                 IsNameStringNotNull();
                 IsAgeStringNotNull();
@@ -35,12 +36,19 @@ namespace DataValidation.Validator
                 CheckNameLenght();
                 CheckAgeValue();
             #endregion
+            
+            welcomeMessage = InfoMessage();
+            return errorList;
+        }
 
-            myList = errorList;
-
-            if (CountErrors.Count == 0)
-                return true;
-            return false;
+        //Returns welcome string with user's name and age
+        private string InfoMessage()
+        {
+            string welcome = $"Welcome! Name: {firstName}, Age: {userAge}.";
+            
+            if(countErrors.Count == 0)
+                return welcome;
+            return String.Empty;
         }
 
         //Check if firstName string is empty
@@ -49,6 +57,7 @@ namespace DataValidation.Validator
             if (!(firstName == String.Empty))
                 return true;
 
+            countErrors.Add("");
             errorList.Add("*Please enter your name");
             return false;
         }
@@ -59,6 +68,7 @@ namespace DataValidation.Validator
             if (!(userAge == String.Empty))
                 return true;
 
+            countErrors.Add("");
             errorList.Add("*Please enter your age");
             return false;
         }
@@ -69,6 +79,7 @@ namespace DataValidation.Validator
             if (Regex.IsMatch(firstName, firstNameRegex))
                 return true;
 
+            countErrors.Add("");
             errorList.Add("*Name string is incorrect");
             return false;
         }
@@ -79,6 +90,7 @@ namespace DataValidation.Validator
             if (Regex.IsMatch(userAge, ageRegex))
                 return false;
 
+            countErrors.Add("");
             errorList.Add("*Age string is incorrect");
             return true;
         }
@@ -89,6 +101,7 @@ namespace DataValidation.Validator
             if (!(firstName.Length > 50))
                 return true;
 
+            countErrors.Add("");
             errorList.Add("*Entered name is too long");
             return false;
         }
@@ -100,6 +113,7 @@ namespace DataValidation.Validator
             {
                 if (age > 150)
                 {
+                    countErrors.Add("");
                     errorList.Add("*Entered age value is too big");
                     return false;
                 }

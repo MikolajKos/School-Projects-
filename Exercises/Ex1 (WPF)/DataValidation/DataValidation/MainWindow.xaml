@@ -65,7 +65,7 @@
                          FontSize="15"
                          Padding="5 0 5 0"
                          Text="{Binding AgeTb, UpdateSourceTrigger=PropertyChanged}"/>
-                
+
                 <Button Content="Check" 
                         BorderThickness="0"
                         Height="50"
@@ -87,6 +87,8 @@
                     </Button.Background>
                 </Button>
 
+
+
                 <ListView ItemsSource="{Binding ErrorMessageTb, UpdateSourceTrigger=PropertyChanged}"
                           Foreground="#FFFF4242"
                           BorderThickness="0">
@@ -97,6 +99,11 @@
                         </Style>
                     </ListView.ItemContainerStyle>
                 </ListView>
+                
+                <TextBlock Text="{Binding WelcomeMessage}" 
+                           Foreground="#FF464646"
+                           FontSize="18"
+                           FontWeight="ExtraLight"/>
             </StackPanel>
         </Grid>
 

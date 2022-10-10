@@ -53,6 +53,19 @@ namespace DataValidation.MVVM.ViewModels
             }
         }
 
+        public string WelcomeMessage 
+        {
+            get
+            {
+                return model.welcomeMessage;
+            }
+            set
+            {
+                model.welcomeMessage = value;
+                onPropertyChanged(nameof(WelcomeMessage));
+            }
+        }
+
 
 
         private ICommand _validateInput = null;
@@ -66,7 +79,7 @@ namespace DataValidation.MVVM.ViewModels
                     {
                         ErrorMessageTb = model.ValidateInputData();
                         
-                        onPropertyChanged(nameof(ValidateInput), nameof(FirstNameTb), nameof(AgeTb));
+                        onPropertyChanged(nameof(ValidateInput), nameof(FirstNameTb), nameof(AgeTb), nameof(WelcomeMessage));
                     },
                     (object o) =>
                     {

@@ -12,6 +12,7 @@ namespace DataValidation.MVVM.Models
     {
         public string firstName = "";
         public string userAge = "";
+        public string welcomeMessage = "";
         
         
         public string firstNameRegex = @"^[a-zA-Z]*$";
@@ -24,18 +25,16 @@ namespace DataValidation.MVVM.Models
             List<string> errorList = new List<string>();
             errorList.Clear();
 
-            /*            Validators myValidator = new Validators(firstName, userAge, errorList);
-                        myValidator.FullValidation(out errorList);*/
-
             SecondValidatorsClass mySecondValidator = new SecondValidatorsClass(firstName, userAge, errorList);
-            mySecondValidator.FullValidation(out errorList);
+            mySecondValidator.FullValidation(out welcomeMessage);
             
             return errorList;
         }
     }
 }
 
-
+/*            Validators myValidator = new Validators(firstName, userAge, errorList);
+            myValidator.FullValidation(out errorList);*/
 
 
 
