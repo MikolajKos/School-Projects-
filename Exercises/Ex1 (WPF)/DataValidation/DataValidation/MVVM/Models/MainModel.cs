@@ -22,8 +22,24 @@ namespace DataValidation.MVVM.Models
         public List<string> ValidateInputData()
         {
             List<string> errorList = new List<string>();
-            Validators myValidator = new Validators(firstName, userAge, ref errorList);
+            errorList.Clear();
+
+            /*            Validators myValidator = new Validators(firstName, userAge, errorList);
+                        myValidator.FullValidation(out errorList);*/
+
+            SecondValidatorsClass mySecondValidator = new SecondValidatorsClass(firstName, userAge, errorList);
+            mySecondValidator.FullValidation(out errorList);
+            
             return errorList;
+        }
+    }
+}
+
+
+
+
+
+
 
 /*            List<string> errorList = new List<string>();
             errorList.Clear();
@@ -59,6 +75,3 @@ namespace DataValidation.MVVM.Models
             }
 
             return errorList;*/
-        }
-    }
-}

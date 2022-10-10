@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataValidation.Validator
 {
-    public class Validators
+    public class SecondValidatorsClass
     {
         public List<string> errorList = new List<string>();
         public string firstName;
@@ -16,7 +16,7 @@ namespace DataValidation.Validator
         public string firstNameRegex = @"^[a-zA-Z]*$";
         public string ageRegex = @"^[1-9]*$";
 
-        public Validators(string name, string age, List<string> infoList)
+        public SecondValidatorsClass(string name, string age, List<string> infoList)
         {
             this.errorList = infoList;
             this.firstName = name;
@@ -28,41 +28,12 @@ namespace DataValidation.Validator
             List<string> CountErrors = new List<string>();
 
             #region Add errorList messages
-            if (!IsNameStringNotNull())
-            {
-                errorList.Add("*Please enter your name");
-                CountErrors.Add("NewError");
-            }
-                
-            if (!IsAgeStringNotNull())
-            {
-                errorList.Add("*Please enter your age");
-                CountErrors.Add("NewError");
-            }
-
-            if (!IsNameStringCorrect())
-            {
-                errorList.Add("*Name string is incorrect");
-                CountErrors.Add("NewError");
-            }
-                
-            if (!IsAgeStringCorrect())
-            {
-                errorList.Add("*Age string is incorrect");
-                CountErrors.Add("NewError");
-            }
-
-            if (!CheckNameLenght())
-            {
-                errorList.Add("*Entered name is too long");
-                CountErrors.Add("NewError");
-            }
-
-            if (!CheckAgeValue())
-            {
-                errorList.Add("*Entered age value is too big");
-                CountErrors.Add("NewError");
-            }
+                IsNameStringNotNull();
+                IsAgeStringNotNull();
+                IsNameStringCorrect();
+                IsAgeStringCorrect();
+                CheckNameLenght();
+                CheckAgeValue();
             #endregion
 
             myList = errorList;
@@ -75,41 +46,51 @@ namespace DataValidation.Validator
         //Check if firstName string is empty
         private bool IsNameStringNotNull()
         {
-            if (firstName == String.Empty)
-                return false;
-            return true;
+            if (!(firstName == String.Empty))
+                return true;
+
+            errorList.Add("*Please enter your name");
+            return false;
         }
 
         //Check if userAge string is empty
         private bool IsAgeStringNotNull()
         {
-            if (userAge == String.Empty)
-                return false;
-            return true;
+            if (!(userAge == String.Empty))
+                return true;
+
+            errorList.Add("*Please enter your age");
+            return false;
         }
 
         //Check if firstName string meets regex requirements
         private bool IsNameStringCorrect()
         {
-            if (!Regex.IsMatch(firstName, firstNameRegex))
-                return false;
-            return true;
+            if (Regex.IsMatch(firstName, firstNameRegex))
+                return true;
+
+            errorList.Add("*Name string is incorrect");
+            return false;
         }
 
         //Check if userAge string meets regex requirements
         private bool IsAgeStringCorrect()
         {
-            if (!Regex.IsMatch(userAge, ageRegex))
+            if (Regex.IsMatch(userAge, ageRegex))
                 return false;
+
+            errorList.Add("*Age string is incorrect");
             return true;
         }
 
         //Checks if firstName string length is not bigger than 50
         private bool CheckNameLenght()
         {
-            if (firstName.Length > 50)
-                return false;
-            return true;
+            if (!(firstName.Length > 50))
+                return true;
+
+            errorList.Add("*Entered name is too long");
+            return false;
         }
 
         //Checks if userAge int value is not bigger than 150
@@ -118,7 +99,10 @@ namespace DataValidation.Validator
             if (int.TryParse(userAge, out int age))
             {
                 if (age > 150)
+                {
+                    errorList.Add("*Entered age value is too big");
                     return false;
+                }
                 return true;
             }
             return false;
