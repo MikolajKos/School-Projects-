@@ -26,15 +26,28 @@ namespace DataValidation.MVVM.Models
             errorList.Clear();
 
             SecondValidatorsClass mySecondValidator = new SecondValidatorsClass(firstName, userAge, errorList);
-            mySecondValidator.FullValidation(out welcomeMessage);
-            
+            mySecondValidator.FullValidation(out errorList);
+
             return errorList;
+        }
+
+        public string InfoMessage(List<string> listOfErrors)
+        {
+            if (listOfErrors.Count == 0)
+                return welcomeMessage = $"Welcome! Name: {firstName}, Age: {userAge}.";
+            return String.Empty;
         }
     }
 }
 
-/*            Validators myValidator = new Validators(firstName, userAge, errorList);
-            myValidator.FullValidation(out errorList);*/
+/*ThirdValidatorsClass myThirdValidator = new ThirdValidatorsClass(firstName, userAge, errorList);
+myThirdValidator.FullValidation(out welcomeMessage);*/
+
+/*SecondValidatorsClass mySecondValidator = new SecondValidatorsClass(firstName, userAge, errorList);
+mySecondValidator.FullValidation(out welcomeMessage);*/
+
+/*Validators myValidator = new Validators(firstName, userAge, errorList);
+myValidator.FullValidation(out errorList);*/
 
 
 

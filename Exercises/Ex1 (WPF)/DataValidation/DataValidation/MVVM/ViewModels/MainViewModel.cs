@@ -78,7 +78,9 @@ namespace DataValidation.MVVM.ViewModels
                     (object o) =>
                     {
                         ErrorMessageTb = model.ValidateInputData();
-                        
+                        model.InfoMessage(model.ValidateInputData());
+
+
                         onPropertyChanged(nameof(ValidateInput), nameof(FirstNameTb), nameof(AgeTb), nameof(WelcomeMessage));
                     },
                     (object o) =>

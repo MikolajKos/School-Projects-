@@ -26,7 +26,7 @@ namespace DataValidation.Validator
 
         //Runs all validation methods and returns list of errors
         //Param1: welcomeMessage - if no error occured string will display name and age of user
-        public List<string> FullValidation(out string welcomeMessage)
+        public List<string> FullValidation(out List<string> myList)
         {
             #region Add errorList messages
                 IsNameStringNotNull();
@@ -37,8 +37,7 @@ namespace DataValidation.Validator
                 CheckAgeValue();
             #endregion
             
-            welcomeMessage = InfoMessage();
-            return errorList;
+            return myList = errorList;
         }
 
         //Returns welcome string with user's name and age

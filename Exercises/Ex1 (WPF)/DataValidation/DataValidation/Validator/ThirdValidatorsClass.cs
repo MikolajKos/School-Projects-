@@ -9,122 +9,125 @@ namespace DataValidation.Validator
 {
     public class ThirdValidatorsClass
     {
-        public class Validators
+        public List<string> errorList = new List<string>();
+        public List<string> countErrors = new List<string>();
+        public string firstName;
+        public string userAge;
+
+        public string firstNameRegex = @"^[a-zA-Z]*$";
+        public string ageRegex = @"^[1-9]*$";
+
+        public ThirdValidatorsClass(string name, string age, List<string> infoList)
         {
-            public List<string> errorList = new List<string>();
-            public string firstName;
-            public string userAge;
+            this.errorList = infoList;
+            this.firstName = name;
+            this.userAge = age;
+        }
 
-            public string firstNameRegex = @"^[a-zA-Z]*$";
-            public string ageRegex = @"^[1-9]*$";
+        //Runs all validation methods and returns list of errors
+        //Param1: welcomeMessage - if no error occured string will display name and age of user
+        public List<string> FullValidation(out string welcomeMessage)
+        {
+            #region Add errorList messages
+            IsNameStringNotNull();
+            IsAgeStringNotNull();
+            IsNameStringCorrect();
+            IsAgeStringCorrect();
+            CheckNameLenght();
+            CheckAgeValue();
+            #endregion
 
-            public Validators(string name, string age, List<string> infoList)
+            //If no errors were counted, set welcome message to user name and age
+            if (CountErrors())
+                welcomeMessage = InfoMessage();
+            else welcomeMessage = "";
+
+            return errorList;
+        }
+
+        //Count errors
+        private bool CountErrors()
+        {
+            if (!IsNameStringNotNull()) countErrors.Add("");
+            if (!IsAgeStringNotNull()) countErrors.Add("");
+            if (!IsNameStringCorrect()) countErrors.Add("");
+            if (!IsAgeStringCorrect()) countErrors.Add("");
+            if (!CheckNameLenght()) countErrors.Add("");
+            if (!CheckAgeValue()) countErrors.Add("");
+
+            if (countErrors.Count > 0)
+                return false;
+            return true;
+        }
+
+        //Returns welcome string with user's name and age
+        private string InfoMessage()
+        {
+            string welcome = $"Welcome! Name: {firstName}, Age: {userAge}.";
+
+            if (countErrors.Count == 0)
+                return welcome;
+            return String.Empty;
+        }
+
+        //Check if firstName string is empty
+        private bool IsNameStringNotNull()
+        {
+            if (!(firstName == String.Empty))
+                return true;
+            errorList.Add("*Please enter your name");
+            return false;
+        }
+
+        //Check if userAge string is empty
+        private bool IsAgeStringNotNull()
+        {
+            if (!(userAge == String.Empty))
+                return true;
+            errorList.Add("*Please enter your age");
+            return false;
+        }
+
+        //Check if firstName string meets regex requirements
+        private bool IsNameStringCorrect()
+        {
+            if (Regex.IsMatch(firstName, firstNameRegex))
+                return true;
+            errorList.Add("*Name string is incorrect");
+            return false;
+        }
+
+        //Check if userAge string meets regex requirements
+        private bool IsAgeStringCorrect()
+        {
+            if (Regex.IsMatch(userAge, ageRegex))
+                return false;
+            errorList.Add("*Age string is incorrect");
+            return true;
+        }
+
+        //Checks if firstName string length is not bigger than 50
+        private bool CheckNameLenght()
+        {
+            if (!(firstName.Length > 50))
+                return true;
+            errorList.Add("*Entered name is too long");
+            return false;
+        }
+
+        //Checks if userAge int value is not bigger than 150
+        private bool CheckAgeValue()
+        {
+            if (int.TryParse(userAge, out int age))
             {
-                this.errorList = infoList;
-                this.firstName = name;
-                this.userAge = age;
-            }
-
-            public bool FullValidation(out List<string> myList)
-            {
-                List<string> CountErrors = new List<string>();
-
-                #region Add errorList messages
-                if (!IsNameStringNotNull())
-                {
-                    errorList.Add("*Please enter your name");
-                    CountErrors.Add("NewError");
-                }
-
-                if (!IsAgeStringNotNull())
-                {
-                    errorList.Add("*Please enter your age");
-                    CountErrors.Add("NewError");
-                }
-
-                if (!IsNameStringCorrect())
-                {
-                    errorList.Add("*Name string is incorrect");
-                    CountErrors.Add("NewError");
-                }
-
-                if (!IsAgeStringCorrect())
-                {
-                    errorList.Add("*Age string is incorrect");
-                    CountErrors.Add("NewError");
-                }
-
-                if (!CheckNameLenght())
-                {
-                    errorList.Add("*Entered name is too long");
-                    CountErrors.Add("NewError");
-                }
-
-                if (!CheckAgeValue())
-                {
+                if (age > 150)
+                { 
                     errorList.Add("*Entered age value is too big");
-                    CountErrors.Add("NewError");
+                    return false;
                 }
-                #endregion
-
-                myList = errorList;
-
-                if (CountErrors.Count == 0)
-                    return true;
-                return false;
-            }
-
-            //Check if firstName string is empty
-            private bool IsNameStringNotNull()
-            {
-                if (firstName == String.Empty)
-                    return false;
                 return true;
             }
-
-            //Check if userAge string is empty
-            private bool IsAgeStringNotNull()
-            {
-                if (userAge == String.Empty)
-                    return false;
-                return true;
-            }
-
-            //Check if firstName string meets regex requirements
-            private bool IsNameStringCorrect()
-            {
-                if (!Regex.IsMatch(firstName, firstNameRegex))
-                    return false;
-                return true;
-            }
-
-            //Check if userAge string meets regex requirements
-            private bool IsAgeStringCorrect()
-            {
-                if (!Regex.IsMatch(userAge, ageRegex))
-                    return false;
-                return true;
-            }
-
-            //Checks if firstName string length is not bigger than 50
-            private bool CheckNameLenght()
-            {
-                if (firstName.Length > 50)
-                    return false;
-                return true;
-            }
-
-            //Checks if userAge int value is not bigger than 150
-            private bool CheckAgeValue()
-            {
-                if (int.TryParse(userAge, out int age))
-                {
-                    if (age > 150)
-                        return false;
-                    return true;
-                }
-                return false;
-            }
+            return false;
         }
     }
 }

@@ -43,3 +43,26 @@ C:\Users\nikok\OneDrive\Dokumenty\PROGRAMOWANIE\School-Projects-\Exercises\Ex1 (
 C:\Users\nikok\OneDrive\Dokumenty\PROGRAMOWANIE\School-Projects-\Exercises\Ex1 (WPF)\DataValidation\DataValidation\obj\Debug\net5.0-windows\DataValidation.csproj.CoreCompileInputs.cache
 C:\Users\nikok\OneDrive\Dokumenty\PROGRAMOWANIE\School-Projects-\Exercises\Ex1 (WPF)\DataValidation\DataValidation\obj\Debug\net5.0-windows\DataValidation.genruntimeconfig.cache
 C:\Users\nikok\OneDrive\Dokumenty\PROGRAMOWANIE\School-Projects-\Exercises\Ex1 (WPF)\DataValidation\DataValidation\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\Uczen\Documents\Mikołaj K\School-Projects-\Exercises\Ex1 (WPF)\DataValidation\DataValidation\bin\Debug\net5.0-windows\DataValidation.exe
+C:\Users\Uczen\Documents\Mikołaj K\School-Projects-\Exercises\Ex1 (WPF)\DataValidation\DataValidation\bin\Debug\net5.0-windows\DataValidation.deps.json
+C:\Users\Uczen\Documents\Mikołaj K\School-Projects-\Exercises\Ex1 (WPF)\DataValidation\DataValidation\bin\Debug\net5.0-windows\DataValidation.runtimeconfig.json
+C:\Users\Uczen\Documents\Mikołaj K\School-Projects-\Exercises\Ex1 (WPF)\DataValidation\DataValidation\bin\Debug\net5.0-windows\DataValidation.runtimeconfig.dev.json
+C:\Users\Uczen\Documents\Mikołaj K\School-Projects-\Exercises\Ex1 (WPF)\DataValidation\DataValidation\bin\Debug\net5.0-windows\DataValidation.dll
+C:\Users\Uczen\Documents\Mikołaj K\School-Projects-\Exercises\Ex1 (WPF)\DataValidation\DataValidation\bin\Debug\net5.0-windows\ref\DataValidation.dll
+C:\Users\Uczen\Documents\Mikołaj K\School-Projects-\Exercises\Ex1 (WPF)\DataValidation\DataValidation\bin\Debug\net5.0-windows\DataValidation.pdb
+C:\Users\Uczen\Documents\Mikołaj K\School-Projects-\Exercises\Ex1 (WPF)\DataValidation\DataValidation\obj\Debug\net5.0-windows\DataValidation.csproj.AssemblyReference.cache
+C:\Users\Uczen\Documents\Mikołaj K\School-Projects-\Exercises\Ex1 (WPF)\DataValidation\DataValidation\obj\Debug\net5.0-windows\MainWindow.g.cs
+C:\Users\Uczen\Documents\Mikołaj K\School-Projects-\Exercises\Ex1 (WPF)\DataValidation\DataValidation\obj\Debug\net5.0-windows\App.g.cs
+C:\Users\Uczen\Documents\Mikołaj K\School-Projects-\Exercises\Ex1 (WPF)\DataValidation\DataValidation\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\Uczen\Documents\Mikołaj K\School-Projects-\Exercises\Ex1 (WPF)\DataValidation\DataValidation\obj\Debug\net5.0-windows\DataValidation_MarkupCompile.cache
+C:\Users\Uczen\Documents\Mikołaj K\School-Projects-\Exercises\Ex1 (WPF)\DataValidation\DataValidation\obj\Debug\net5.0-windows\DataValidation_MarkupCompile.lref
+C:\Users\Uczen\Documents\Mikołaj K\School-Projects-\Exercises\Ex1 (WPF)\DataValidation\DataValidation\obj\Debug\net5.0-windows\MainWindow.baml
+C:\Users\Uczen\Documents\Mikołaj K\School-Projects-\Exercises\Ex1 (WPF)\DataValidation\DataValidation\obj\Debug\net5.0-windows\DataValidation.g.resources
+C:\Users\Uczen\Documents\Mikołaj K\School-Projects-\Exercises\Ex1 (WPF)\DataValidation\DataValidation\obj\Debug\net5.0-windows\DataValidation.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Uczen\Documents\Mikołaj K\School-Projects-\Exercises\Ex1 (WPF)\DataValidation\DataValidation\obj\Debug\net5.0-windows\DataValidation.AssemblyInfoInputs.cache
+C:\Users\Uczen\Documents\Mikołaj K\School-Projects-\Exercises\Ex1 (WPF)\DataValidation\DataValidation\obj\Debug\net5.0-windows\DataValidation.AssemblyInfo.cs
+C:\Users\Uczen\Documents\Mikołaj K\School-Projects-\Exercises\Ex1 (WPF)\DataValidation\DataValidation\obj\Debug\net5.0-windows\DataValidation.csproj.CoreCompileInputs.cache
+C:\Users\Uczen\Documents\Mikołaj K\School-Projects-\Exercises\Ex1 (WPF)\DataValidation\DataValidation\obj\Debug\net5.0-windows\DataValidation.dll
+C:\Users\Uczen\Documents\Mikołaj K\School-Projects-\Exercises\Ex1 (WPF)\DataValidation\DataValidation\obj\Debug\net5.0-windows\ref\DataValidation.dll
+C:\Users\Uczen\Documents\Mikołaj K\School-Projects-\Exercises\Ex1 (WPF)\DataValidation\DataValidation\obj\Debug\net5.0-windows\DataValidation.pdb
+C:\Users\Uczen\Documents\Mikołaj K\School-Projects-\Exercises\Ex1 (WPF)\DataValidation\DataValidation\obj\Debug\net5.0-windows\DataValidation.genruntimeconfig.cache
