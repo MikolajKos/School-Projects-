@@ -45,7 +45,7 @@ namespace DataValidation.Validator
         {
             string welcome = $"Welcome! Name: {firstName}, Age: {userAge}.";
             
-            if(countErrors.Count == 0)
+            if(errorList.Count == 0)
                 return welcome;
             return String.Empty;
         }
@@ -55,8 +55,6 @@ namespace DataValidation.Validator
         {
             if (!(firstName == String.Empty))
                 return true;
-
-            countErrors.Add("");
             errorList.Add("*Please enter your name");
             return false;
         }
@@ -66,8 +64,6 @@ namespace DataValidation.Validator
         {
             if (!(userAge == String.Empty))
                 return true;
-
-            countErrors.Add("");
             errorList.Add("*Please enter your age");
             return false;
         }
@@ -77,8 +73,6 @@ namespace DataValidation.Validator
         {
             if (Regex.IsMatch(firstName, firstNameRegex))
                 return true;
-
-            countErrors.Add("");
             errorList.Add("*Name string is incorrect");
             return false;
         }
@@ -88,8 +82,6 @@ namespace DataValidation.Validator
         {
             if (Regex.IsMatch(userAge, ageRegex))
                 return false;
-
-            countErrors.Add("");
             errorList.Add("*Age string is incorrect");
             return true;
         }
@@ -99,8 +91,6 @@ namespace DataValidation.Validator
         {
             if (!(firstName.Length > 50))
                 return true;
-
-            countErrors.Add("");
             errorList.Add("*Entered name is too long");
             return false;
         }
@@ -112,7 +102,6 @@ namespace DataValidation.Validator
             {
                 if (age > 150)
                 {
-                    countErrors.Add("");
                     errorList.Add("*Entered age value is too big");
                     return false;
                 }
