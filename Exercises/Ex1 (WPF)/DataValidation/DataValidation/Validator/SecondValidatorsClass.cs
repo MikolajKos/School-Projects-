@@ -26,7 +26,7 @@ namespace DataValidation.Validator
 
         //Runs all validation methods and returns list of errors
         //Param1: welcomeMessage - if no error occured string will display name and age of user
-        public List<string> FullValidation(out List<string> myList)
+        public List<string> FullValidation()
         {
             #region Add errorList messages
                 IsNameStringNotNull();
@@ -37,77 +37,68 @@ namespace DataValidation.Validator
                 CheckAgeValue();
             #endregion
             
-            return myList = errorList;
+            return errorList;
         }
 
-        //Returns welcome string with user's name and age
-        private string InfoMessage()
-        {
-            string welcome = $"Welcome! Name: {firstName}, Age: {userAge}.";
-            
-            if(errorList.Count == 0)
-                return welcome;
-            return String.Empty;
-        }
 
         //Check if firstName string is empty
-        private bool IsNameStringNotNull()
+        private List<string> IsNameStringNotNull()
         {
             if (!(firstName == String.Empty))
-                return true;
+                return null;
             errorList.Add("*Please enter your name");
-            return false;
+            return errorList;
         }
 
         //Check if userAge string is empty
-        private bool IsAgeStringNotNull()
+        private List<string> IsAgeStringNotNull()
         {
             if (!(userAge == String.Empty))
-                return true;
+                return null;
             errorList.Add("*Please enter your age");
-            return false;
+            return errorList;
         }
 
         //Check if firstName string meets regex requirements
-        private bool IsNameStringCorrect()
+        private List<string> IsNameStringCorrect()
         {
             if (Regex.IsMatch(firstName, firstNameRegex))
-                return true;
+                return null;
             errorList.Add("*Name string is incorrect");
-            return false;
+            return errorList;
         }
 
         //Check if userAge string meets regex requirements
-        private bool IsAgeStringCorrect()
+        private List<string> IsAgeStringCorrect()
         {
             if (Regex.IsMatch(userAge, ageRegex))
-                return false;
+                return null;
             errorList.Add("*Age string is incorrect");
-            return true;
+            return errorList;
         }
 
         //Checks if firstName string length is not bigger than 50
-        private bool CheckNameLenght()
+        private List<string> CheckNameLenght()
         {
             if (!(firstName.Length > 50))
-                return true;
+                return null;
             errorList.Add("*Entered name is too long");
-            return false;
+            return errorList;
         }
 
         //Checks if userAge int value is not bigger than 150
-        private bool CheckAgeValue()
+        private List<string> CheckAgeValue()
         {
             if (int.TryParse(userAge, out int age))
             {
                 if (age > 150)
                 {
                     errorList.Add("*Entered age value is too big");
-                    return false;
+                    return errorList;
                 }
-                return true;
+                return null;
             }
-            return false;
+            return errorList;
         }
     }
 }

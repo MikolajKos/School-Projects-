@@ -77,8 +77,8 @@ namespace DataValidation.MVVM.ViewModels
                 if (_validateInput == null) _validateInput = new RelayCommand(
                     (object o) =>
                     {
-                        ErrorMessageTb = model.ValidateInputData();
-                        model.InfoMessage(model.ValidateInputData());
+                        ErrorMessageTb = model.AssignErrorList();
+                        model.InfoMessage(model.AssignErrorList());
 
 
                         onPropertyChanged(nameof(ValidateInput), nameof(FirstNameTb), nameof(AgeTb), nameof(WelcomeMessage));
