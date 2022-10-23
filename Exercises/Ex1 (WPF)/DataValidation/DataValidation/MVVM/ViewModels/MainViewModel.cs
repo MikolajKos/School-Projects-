@@ -1,5 +1,7 @@
-﻿using DataValidation.Core;
+﻿using DataValidation.Converters;
+using DataValidation.Core;
 using DataValidation.MVVM.Models;
+using DataValidation.Validator;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,28 +15,30 @@ namespace DataValidation.MVVM.ViewModels
     {
         MainModel model = new MainModel();
 
+        private string _firstNameTb = "";
         public string FirstNameTb
         {
             get
             {
-                return model.firstName;
+                return _firstNameTb;
             }
             set
             {
-                model.firstName = value;
+                _firstNameTb = value;
                 onPropertyChanged(nameof(FirstNameTb));
             }
         }
 
+        private string _ageTb = "";
         public string AgeTb
         {
             get
             {
-                return model.userAge;
+                return _ageTb;
             }
             set
             {
-                model.userAge = value;
+                _ageTb = value;
                 onPropertyChanged(nameof(AgeTb));
             }
         }
@@ -53,15 +57,16 @@ namespace DataValidation.MVVM.ViewModels
             }
         }
 
+        private string _welcomeMessage;
         public string WelcomeMessage 
         {
             get
             {
-                return model.welcomeMessage;
+                return _welcomeMessage;
             }
             set
             {
-                model.welcomeMessage = value;
+                _welcomeMessage = value;
                 onPropertyChanged(nameof(WelcomeMessage));
             }
         }
@@ -77,19 +82,23 @@ namespace DataValidation.MVVM.ViewModels
                 if (_validateInput == null) _validateInput = new RelayCommand(
                     (object o) =>
                     {
-                        ErrorMessageTb = model.AssignErrorList();
-                        model.InfoMessage(model.AssignErrorList());
+                        ValidatorsClass dbOperations = new ValidatorsClass(FirstNameTb, AgeTb);
 
-
-                        onPropertyChanged(nameof(ValidateInput), nameof(FirstNameTb), nameof(AgeTb), nameof(WelcomeMessage));
+                        if (!dbOperations.FullValidation(out model.listOfErrors))
+                        {
+                            ErrorMessageTb = model.listOfErrors;
+                            WelcomeMessage = String.Empty;
+                        }
+                        else
+                        {
+                            WelcomeMessageConverter messageConverter = new WelcomeMessageConverter(FirstNameTb, AgeTb);
+                            WelcomeMessage = messageConverter.ConvertedWelcomeMessage();
+                            ErrorMessageTb = model.listOfErrors;
+                        }
                     },
                     (object o) =>
                     {
-/*                        if (FirstNameTb == String.Empty || AgeTb == String.Empty)
-                        {
-                            return false;
-                        }
-                        else*/ return true;
+                        return true;
                     });
                 return _validateInput;
             }

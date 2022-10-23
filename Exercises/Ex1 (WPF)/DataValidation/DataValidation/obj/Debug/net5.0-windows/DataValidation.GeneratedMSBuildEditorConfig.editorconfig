@@ -7,4 +7,4 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = DataValidation
-build_property.ProjectDir = C:\Users\Uczen\Documents\Mikołaj K\.NET\WPF\MVVM\School-Projects-\Exercises\Ex1 (WPF)\DataValidation\DataValidation\
+build_property.ProjectDir = E:\School-Projects-\Exercises\Ex1 (WPF)\DataValidation\DataValidation\

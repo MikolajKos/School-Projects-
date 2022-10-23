@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataValidation.Converters;
+using DataValidation.MVVM.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,15 +9,16 @@ using System.Threading.Tasks;
 
 namespace DataValidation.Validator
 {
-    public class SecondValidatorsClass
+    public class ValidatorsClass
     {
+        MainModel model = new MainModel();
+
         public List<string> errorList = new List<string>();
         public string firstName;
         public string userAge;
-        public string firstNameRegex = @"^[a-zA-Z]*$";
-        public string ageRegex = @"^[1-9]*$";
 
-        public SecondValidatorsClass(string name, string age)
+
+        public ValidatorsClass(string name, string age)
         {
             this.firstName = name;
             this.userAge = age;
@@ -23,19 +26,25 @@ namespace DataValidation.Validator
 
         //Runs all validation methods and returns list of errors
         //Param1: welcomeMessage - if no error occured string will display name and age of user
-        public List<string> FullValidation()
+        public bool FullValidation(out List<string> myErrors)
         {
-            #region Add errorList messages
-                IsNameStringNotNull();
-                IsAgeStringNotNull();
-                IsNameStringCorrect();
-                IsAgeStringCorrect();
-                CheckNameLenght();
-                CheckAgeValue();
+            //Passes errorList to count errors and lets push out myErrors 
+            ErrorListConverter listConverter = new ErrorListConverter(errorList);
+
+            #region Runs all validation methods
+            IsNameStringNotNull();
+            IsAgeStringNotNull();
+            IsNameStringCorrect();
+            IsAgeStringCorrect();
+            CheckNameLenght();
+            CheckAgeValue();
             #endregion
-            
-            return errorList;
+
+            return listConverter.ErrorsWereCount(out myErrors);
         }
+
+
+        //You can add validation methods depending on your needs
 
 
         //Check if firstName string is empty
@@ -59,7 +68,7 @@ namespace DataValidation.Validator
         //Check if firstName string meets regex requirements
         private List<string> IsNameStringCorrect()
         {
-            if (Regex.IsMatch(firstName, firstNameRegex))
+            if (Regex.IsMatch(firstName, model.firstNameRegex))
                 return null;
             errorList.Add("*Name string is incorrect");
             return errorList;
@@ -68,7 +77,7 @@ namespace DataValidation.Validator
         //Check if userAge string meets regex requirements
         private List<string> IsAgeStringCorrect()
         {
-            if (Regex.IsMatch(userAge, ageRegex))
+            if (Regex.IsMatch(userAge, model.ageRegex))
                 return null;
             errorList.Add("*Age string is incorrect");
             return errorList;
@@ -99,3 +108,12 @@ namespace DataValidation.Validator
         }
     }
 }
+
+
+/*private List<string> DontSwear()
+{
+    if (!(firstName == "Fuck"))
+        return null;
+    errorList.Add("*Don't swear!");
+    return errorList;
+}*/
