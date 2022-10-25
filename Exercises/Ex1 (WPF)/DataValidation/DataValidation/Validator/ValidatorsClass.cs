@@ -30,90 +30,17 @@ namespace DataValidation.Validator
         {
             //Passes errorList to count errors and lets push out myErrors 
             ErrorListConverter listConverter = new ErrorListConverter(errorList);
+            NameValidation nameVal = new NameValidation(firstName, errorList);
+            AgeValidation ageVal = new AgeValidation(userAge, errorList);
 
             #region Runs all validation methods
-            IsNameStringNotNull();
-            IsAgeStringNotNull();
-            IsNameStringCorrect();
-            IsAgeStringCorrect();
-            CheckNameLenght();
-            CheckAgeValue();
+
+            nameVal.FullValidationName();
+            ageVal.FullAgeValidation();
+
             #endregion
 
             return listConverter.ErrorsWereCount(out myErrors);
         }
-
-
-        //You can add validation methods depending on your needs
-
-
-        //Check if firstName string is empty
-        private List<string> IsNameStringNotNull()
-        {
-            if (!(firstName == String.Empty))
-                return null;
-            errorList.Add("*Please enter your name");
-            return errorList;
-        }
-
-        //Check if userAge string is empty
-        private List<string> IsAgeStringNotNull()
-        {
-            if (!(userAge == String.Empty))
-                return null;
-            errorList.Add("*Please enter your age");
-            return errorList;
-        }
-
-        //Check if firstName string meets regex requirements
-        private List<string> IsNameStringCorrect()
-        {
-            if (Regex.IsMatch(firstName, model.firstNameRegex))
-                return null;
-            errorList.Add("*Name string is incorrect");
-            return errorList;
-        }
-
-        //Check if userAge string meets regex requirements
-        private List<string> IsAgeStringCorrect()
-        {
-            if (Regex.IsMatch(userAge, model.ageRegex))
-                return null;
-            errorList.Add("*Age string is incorrect");
-            return errorList;
-        }
-
-        //Checks if firstName string length is not bigger than 50
-        private List<string> CheckNameLenght()
-        {
-            if (!(firstName.Length > 50))
-                return null;
-            errorList.Add("*Entered name is too long");
-            return errorList;
-        }
-
-        //Checks if userAge int value is not bigger than 150
-        private List<string> CheckAgeValue()
-        {
-            if (int.TryParse(userAge, out int age))
-            {
-                if (age > 150)
-                {
-                    errorList.Add("*Entered age value is too big");
-                    return errorList;
-                }
-                return null;
-            }
-            return errorList;
-        }
     }
 }
-
-
-/*private List<string> DontSwear()
-{
-    if (!(firstName == "Fuck"))
-        return null;
-    errorList.Add("*Don't swear!");
-    return errorList;
-}*/

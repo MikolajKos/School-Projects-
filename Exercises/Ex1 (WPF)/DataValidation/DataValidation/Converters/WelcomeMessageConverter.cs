@@ -20,8 +20,8 @@ namespace DataValidation.Converters
         public string ConvertedWelcomeMessage()
         {
             if (userAge >= 18)
-                return $"Witaj {userName}, Wiek: {userAge}, Pełnoletni.";
-            return $"Witaj {userName}, Wiek: {userAge}.";
+                return $"Welcome {userName}, Age: {userAge}, Adult.";
+            return $"Welcome {userName}, Age: {userAge}.";
         }
     }
 }

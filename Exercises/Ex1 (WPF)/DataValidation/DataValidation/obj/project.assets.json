@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\School-Projects-\\Exercises\\Ex1 (WPF)\\DataValidation\\DataValidation\\DataValidation.csproj",
+      "projectUniqueName": "C:\\Users\\nikok\\OneDrive\\Dokumenty\\PROGRAMOWANIE\\.NET\\School-Projects-\\Exercises\\Ex1 (WPF)\\DataValidation\\DataValidation\\DataValidation.csproj",
       "projectName": "DataValidation",
-      "projectPath": "E:\\School-Projects-\\Exercises\\Ex1 (WPF)\\DataValidation\\DataValidation\\DataValidation.csproj",
+      "projectPath": "C:\\Users\\nikok\\OneDrive\\Dokumenty\\PROGRAMOWANIE\\.NET\\School-Projects-\\Exercises\\Ex1 (WPF)\\DataValidation\\DataValidation\\DataValidation.csproj",
       "packagesPath": "C:\\Users\\nikok\\.nuget\\packages\\",
-      "outputPath": "E:\\School-Projects-\\Exercises\\Ex1 (WPF)\\DataValidation\\DataValidation\\obj\\",
+      "outputPath": "C:\\Users\\nikok\\OneDrive\\Dokumenty\\PROGRAMOWANIE\\.NET\\School-Projects-\\Exercises\\Ex1 (WPF)\\DataValidation\\DataValidation\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
