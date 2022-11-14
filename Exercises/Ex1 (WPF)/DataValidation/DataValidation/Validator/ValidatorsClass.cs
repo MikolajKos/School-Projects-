@@ -29,9 +29,9 @@ namespace DataValidation.Validator
         public bool FullValidation(out List<string> myErrors)
         {
             //Passes errorList to count errors and lets push out myErrors 
-            ErrorListConverter listConverter = new ErrorListConverter(errorList);
-            NameValidation nameVal = new NameValidation(firstName, errorList);
-            AgeValidation ageVal = new AgeValidation(userAge, errorList);
+            ErrorListConverter listConverter = new(errorList);
+            NameValidation nameVal = new(firstName, errorList);
+            AgeValidation ageVal = new(userAge, errorList);
 
             #region Runs all validation methods
 

@@ -1,0 +1,35 @@
+﻿<Window x:Class="OnlyBinding.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OnlyBinding"
+        xmlns:vm="clr-namespace:OnlyBinding.MVVM.ViewModels"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="340" ResizeMode="NoResize">
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBlock Margin="0 0 0 10" Text="Podaj Imię:" FontSize="22" FontWeight="ExtraLight" Foreground="#FF535353"/>
+            <TextBox Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}" Height="40" VerticalContentAlignment="Center" Foreground="#FF535353" FontSize="16" FontWeight="ExtraLight"/>
+            <Button Command="{Binding GetUserName}" Margin="0 10 0 0" Height="40" Content="Sign in" FontWeight="ExtraLight" FontSize="14"/>
+            <TextBlock Text="{Binding WelcomeMessage}" Margin="0 10 0 0" FontSize="18" FontWeight="ExtraLight" Foreground="#FF535353"/>
+
+        </StackPanel>
+    </Grid>
+</Window>
